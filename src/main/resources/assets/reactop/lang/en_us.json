@@ -1,0 +1,11 @@
+{
+    "block.reactop.milidium_block": "Milidium Block",
+    "block.reactop.useless_milidium_block": "Milidium Block (Useless)",
+    
+    "item.reactop.useless_milidium_ingot": "Milidium Ingot (Useless)",
+    "item.reactop.milidium_ingot": "Milidium Ingot",
+    "item.reactop.milidium_bar": "Milidium Bar",
+    
+    "itemGroup.reactop.item_group": "Reactop",
+    "custom.reactop.unknown_milidium_type": "Milidium Ingot (Unknown)"
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "reactop",
+  "version": "${version}",
+
+  "name": "Reactop",
+  "description": "Reactop is a modular reactor mod meant to be more explosive and powerful than most reactor mods",
+  "authors": [
+    "zenith391"
+  ],
+  "contact": {
+    "sources": "https://github.com/zenith391/reactop"
+  },
+
+  "license": "MIT",
+  "icon": "assets/reactop/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.zenith391.reactop.ReactopMod"
+    ]
+  },
+  "mixins": [
+    
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  },
+  "suggests": {
+    
+  }
+}

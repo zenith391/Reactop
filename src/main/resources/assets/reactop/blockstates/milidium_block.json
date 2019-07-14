@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "reactop:block/milidium_block"
+        }
+    }
+}
