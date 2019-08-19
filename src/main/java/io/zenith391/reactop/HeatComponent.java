@@ -7,6 +7,9 @@ public interface HeatComponent extends Component {
 	public double getHeat();
 	public void setHeat(double heat);
 	
+	public double getCapacity();
+	public void setCapacity(double capacity);
+	
 	/**
 	 * Acts as if heat was shared, returns shared heat<br/>
 	 * Note: This methods drains heat from the component.

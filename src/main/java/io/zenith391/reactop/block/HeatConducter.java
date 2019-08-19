@@ -19,6 +19,8 @@ import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
@@ -75,13 +77,27 @@ public class HeatConducter extends Block implements BlockComponentProvider, Bloc
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 	
+	public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
+		// Check all neighbours when placed
+		neighborUpdate(state, world, pos, null, new BlockPos(pos.getX(), pos.getY()+1, pos.getZ()), false);
+		state = world.getBlockState(pos);
+		neighborUpdate(state, world, pos, null, new BlockPos(pos.getX(), pos.getY()-1, pos.getZ()), false);
+		state = world.getBlockState(pos);
+		neighborUpdate(state, world, pos, null, new BlockPos(pos.getX()+1, pos.getY(), pos.getZ()), false);
+		state = world.getBlockState(pos);
+		neighborUpdate(state, world, pos, null, new BlockPos(pos.getX()-1, pos.getY(), pos.getZ()), false);
+		state = world.getBlockState(pos);
+		neighborUpdate(state, world, pos, null, new BlockPos(pos.getX(), pos.getY(), pos.getZ()+1), false);
+		state = world.getBlockState(pos);
+		neighborUpdate(state, world, pos, null, new BlockPos(pos.getX(), pos.getY(), pos.getZ()-1), false);
+	}
+	
 	@Override
 	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block oldBlock, BlockPos pos2, boolean bool) {
 		super.neighborUpdate(state, world, pos, oldBlock, pos2, bool);
 		Block block = world.getBlockState(pos2).getBlock();
 		boolean destroyed = Blocks.AIR == block;
-		
-		if (canConnectTo(block, pos, world) || block == Blocks.AIR) {
+		if (canConnectTo(block, pos2, world) || block == Blocks.AIR) {
 			BooleanProperty prop = null;
 			if (pos2.getX() > pos.getX()) {
 				prop = EAST;
