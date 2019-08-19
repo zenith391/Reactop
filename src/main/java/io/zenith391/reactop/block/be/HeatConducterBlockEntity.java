@@ -1,6 +1,7 @@
 package io.zenith391.reactop.block.be;
 
 import io.zenith391.reactop.HeatComponent;
+import io.zenith391.reactop.HeatComponentImpl;
 import io.zenith391.reactop.registry.BlockRegistry;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
@@ -8,7 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 public class HeatConducterBlockEntity extends BlockEntity {
 
 	// Heat is in Celcius, 0=20°C,-20=0°C,20=40°C
-	HeatComponent heat = new HeatComponent();
+	HeatComponent heat = new HeatComponentImpl();
 	
 	public HeatConducterBlockEntity() {
 		super(BlockRegistry.HEAT_CONDUCTER_ENTITY);

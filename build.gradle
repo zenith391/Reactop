@@ -30,7 +30,6 @@ dependencies {
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modCompile "com.github.NerdHubMC:Cardinal-Energy:${cardinal_energy_version}"
 	modCompile "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
-	modCompile "io.github.cottonmc:LibGUI:${libgui_version}"
 	include "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
 }
 

@@ -2,17 +2,10 @@ package io.zenith391.reactop;
 
 import nerdhub.cardinal.components.api.component.Component;
 
-public class HeatComponent implements Component {
-
-	double heat;
+public interface HeatComponent extends Component {
 	
-	public double getHeat() {
-		return heat;
-	}
-	
-	public void setHeat(double heat) {
-		this.heat = heat;
-	}
+	public double getHeat();
+	public void setHeat(double heat);
 	
 	/**
 	 * Acts as if heat was shared, returns shared heat<br/>
@@ -21,11 +14,11 @@ public class HeatComponent implements Component {
 	 * @param conduct
 	 * @return
 	 */
-	public double shareHeat(float conduct) {
+	public default double shareHeat(float conduct) {
 		if (conduct < 0)
 			conduct = 0;
-		double shared = heat/(1+conduct);
-		heat = heat - shared;
+		double shared = getHeat()/(1+conduct);
+		setHeat(getHeat() - shared);
 		return shared;
 	}
 	

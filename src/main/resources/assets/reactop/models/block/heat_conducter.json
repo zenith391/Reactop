@@ -1,0 +1,20 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "heat_conducter1": "reactop:block/heat_conducter1"
+    },
+    "elements": [
+        {
+            "from": [ 4, 4, 0 ], 
+            "to": [ 12, 12, 5 ], 
+            "faces": {
+                "north": { "texture": "#heat_conducter1", "uv": [ 0, 0, 8, 8 ] },
+                "east": { "texture": "#heat_conducter1", "uv": [ 0, 0, 5, 8 ] },
+                "south": { "texture": "#heat_conducter1", "uv": [ 0, 0, 8, 8 ] },
+                "west": { "texture": "#heat_conducter1", "uv": [ 0, 0, 5, 8 ] },
+                "up": { "texture": "#heat_conducter1", "uv": [ 0, 0, 8, 5 ] },
+                "down": { "texture": "#heat_conducter1", "uv": [ 0, 0, 8, 5 ] }
+            }
+        }
+    ]
+}

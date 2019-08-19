@@ -19,6 +19,9 @@
   "entrypoints": {
     "main": [
       "io.zenith391.reactop.ReactopMod"
+    ],
+    "client": [
+      "io.zenith391.reactop.client.ReactopClient"
     ]
   },
   "mixins": [
