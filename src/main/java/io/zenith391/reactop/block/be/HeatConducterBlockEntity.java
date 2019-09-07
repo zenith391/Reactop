@@ -26,6 +26,7 @@ public class HeatConducterBlockEntity extends BlockEntity {
 	}
 
 	public HeatComponent getHeatComponent() {
+		heat.setCapacity(500);
 		return heat;
 	}
 	

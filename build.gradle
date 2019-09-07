@@ -15,6 +15,10 @@ repositories {
         name = "NerdHubMC"
         url = "https://maven.abusedmaster.xyz"
     }
+    maven {
+    	name = "Cotton"
+    	url = "http://server.bbkr.space:8081/artifactory/libs-release/"
+    }
 }
 
 minecraft {
@@ -30,6 +34,7 @@ dependencies {
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modCompile "com.github.NerdHubMC:Cardinal-Energy:${cardinal_energy_version}"
 	modCompile "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
+	modCompile "io.github.cottonmc:LibGui:1.3.2"
 	include "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
 }
 

@@ -14,6 +14,7 @@ public class BlockRegistry {
 	public static final Block USELESS_MILIDIUM_BLOCK;
 	public static final Block HEAT_CONDUCTER;
 	public static final Block HEAT_STORAGE;
+	public static final Block NEUTRON_INJECTOR;
 	
 	public static BlockEntityType<HeatConducterBlockEntity> HEAT_CONDUCTER_ENTITY;
 	public static BlockEntityType<HeatStorageBlockEntity> HEAT_STORAGE_ENTITY;
@@ -23,6 +24,7 @@ public class BlockRegistry {
 		USELESS_MILIDIUM_BLOCK = new UselessMilidiumBlock();
 		HEAT_CONDUCTER = new HeatConducter();
 		HEAT_STORAGE = new HeatStorage();
+		NEUTRON_INJECTOR = new NeutronInjector();
 	}
 	
 	static void register(String id, Block block) {
@@ -35,6 +37,7 @@ public class BlockRegistry {
 		register("useless_milidium_block", USELESS_MILIDIUM_BLOCK);
 		register("heat_conducter", HEAT_CONDUCTER);
 		register("heat_storage", HEAT_STORAGE);
+		register("neutron_injector", NEUTRON_INJECTOR);
 		
 		// Block Entities
 		HEAT_CONDUCTER_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
