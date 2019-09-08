@@ -21,6 +21,7 @@ public class ItemRegistry {
 	public static final Item MILIDIUM_INGOT;
 	public static final Item USELESS_MILIDIUM_INGOT;
 	public static final Item MILIDIUM_BAR;
+	public static final Item TEMPERATURE_GAUGE;
 	
 	static {
 		BLOCKS = new ArrayList<>();
@@ -28,6 +29,7 @@ public class ItemRegistry {
 		MILIDIUM_INGOT = new MilidiumIngot();
 		USELESS_MILIDIUM_INGOT = new UselessMilidiumIngot();
 		MILIDIUM_BAR = new MilidiumBar();
+		TEMPERATURE_GAUGE = new TemperatureGauge();
 	}
 	
 	public static Item.Settings generateSettings(Block block) {
@@ -47,6 +49,7 @@ public class ItemRegistry {
 		register("milidium_ingot", MILIDIUM_INGOT);
 		register("useless_milidium_ingot", USELESS_MILIDIUM_INGOT);
 		register("milidium_bar", MILIDIUM_BAR);
+		register("temperature_gauge", TEMPERATURE_GAUGE);
 	}
 	
 }

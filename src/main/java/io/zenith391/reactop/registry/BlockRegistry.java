@@ -1,8 +1,7 @@
 package io.zenith391.reactop.registry;
 
 import io.zenith391.reactop.block.*;
-import io.zenith391.reactop.block.be.HeatConducterBlockEntity;
-import io.zenith391.reactop.block.be.HeatStorageBlockEntity;
+import io.zenith391.reactop.block.be.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
@@ -15,9 +14,11 @@ public class BlockRegistry {
 	public static final Block HEAT_CONDUCTER;
 	public static final Block HEAT_STORAGE;
 	public static final Block NEUTRON_INJECTOR;
+	public static final Block REACTOR_TANK;
 	
 	public static BlockEntityType<HeatConducterBlockEntity> HEAT_CONDUCTER_ENTITY;
 	public static BlockEntityType<HeatStorageBlockEntity> HEAT_STORAGE_ENTITY;
+	public static BlockEntityType<ReactorTankBlockEntity> REACTOR_TANK_ENTITY;
 	
 	static {
 		MILIDIUM_BLOCK = new MilidiumBlock();
@@ -25,6 +26,7 @@ public class BlockRegistry {
 		HEAT_CONDUCTER = new HeatConducter();
 		HEAT_STORAGE = new HeatStorage();
 		NEUTRON_INJECTOR = new NeutronInjector();
+		REACTOR_TANK = new ReactorTank();
 	}
 	
 	static void register(String id, Block block) {
@@ -38,6 +40,7 @@ public class BlockRegistry {
 		register("heat_conducter", HEAT_CONDUCTER);
 		register("heat_storage", HEAT_STORAGE);
 		register("neutron_injector", NEUTRON_INJECTOR);
+		register("reactor_tank", REACTOR_TANK);
 		
 		// Block Entities
 		HEAT_CONDUCTER_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
@@ -45,8 +48,12 @@ public class BlockRegistry {
 				BlockEntityType.Builder.create(HeatConducterBlockEntity::new, HEAT_CONDUCTER).build(null));
 		
 		HEAT_STORAGE_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
-				new Identifier("reactop", "heat_storage__entity"),
+				new Identifier("reactop", "heat_storage_entity"),
 				BlockEntityType.Builder.create(HeatStorageBlockEntity::new, HEAT_STORAGE).build(null));
+		
+		REACTOR_TANK_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
+				new Identifier("reactop", "reactor_tank_entity"),
+				BlockEntityType.Builder.create(ReactorTankBlockEntity::new, REACTOR_TANK).build(null));
 	}
 	
 }

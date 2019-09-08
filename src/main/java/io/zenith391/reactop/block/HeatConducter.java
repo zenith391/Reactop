@@ -42,7 +42,7 @@ public class HeatConducter extends Block implements BlockComponentProvider, Bloc
 			false,
 			false,
 			false,
-			true,
+			false,
 			true,
 			false,
 			false,

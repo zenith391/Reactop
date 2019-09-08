@@ -6,6 +6,7 @@ public interface HeatComponent extends Component {
 	
 	public double getHeat();
 	public void setHeat(double heat);
+	public double addHeat(double heat);
 	
 	public double getCapacity();
 	public void setCapacity(double capacity);

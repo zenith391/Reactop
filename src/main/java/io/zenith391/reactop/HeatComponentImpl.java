@@ -25,4 +25,16 @@ public class HeatComponentImpl implements HeatComponent {
 		this.capacity = capacity;
 	}
 
+	@Override
+	public double addHeat(double heat) {
+		if (this.heat + heat <= capacity) {
+			this.heat += heat;
+			return heat;
+		} else {
+			heat = capacity - this.heat;
+			this.heat += heat;
+			return heat;
+		}
+	}
+
 }
