@@ -48,12 +48,8 @@ public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 
 	@Override
 	public void tick() {
-		
-		if (heat.getHeat() < 293d) { // arbitrary Minecraft ambient temperature
-			heat.addHeat(1d);
-		} else {
-			heat.addHeat(-0.05d);
-		}
+		heat.ambientTemperature();
+		heat.setHeat(5000d);
 		
 		tryShare(pos.down());
 		tryShare(pos.up());
@@ -61,7 +57,6 @@ public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 		tryShare(pos.east());
 		tryShare(pos.west());
 		tryShare(pos.south());
-		
 	}
 	
 }

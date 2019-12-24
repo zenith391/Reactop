@@ -24,7 +24,7 @@ public class TemperatureGauge extends Item {
 			BlockComponentProvider provider = (BlockComponentProvider) block;
 			if (provider.hasComponent(usage.getWorld(), usage.getBlockPos(), ComponentTypes.HEAT_COMPONENT, null)) {
 				HeatComponent hc = provider.getComponent(usage.getWorld(), usage.getBlockPos(), ComponentTypes.HEAT_COMPONENT, null);
-				usage.getPlayer().sendMessage(new LiteralText("Heat: " + (int) hc.getHeat() + "/" + (int) hc.getCapacity() + "H"));
+				usage.getPlayer().sendMessage(new LiteralText("Heat: " + (int) hc.getHeat() + "/" + (int) hc.getCapacity() + "°C"));
 				return ActionResult.SUCCESS;
 			}
 		}

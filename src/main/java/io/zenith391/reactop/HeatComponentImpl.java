@@ -1,9 +1,12 @@
 package io.zenith391.reactop;
 
+import java.util.function.Consumer;
+
 public class HeatComponentImpl implements HeatComponent {
 
 	protected double heat;
 	protected double capacity = 1000;
+	protected Consumer<Double> meltdownHandler;
 	
 	@Override
 	public double getHeat() {
@@ -35,11 +38,16 @@ public class HeatComponentImpl implements HeatComponent {
 			this.heat += heat;
 			return heat;
 		} else {
-			heat = capacity - this.heat;
-			this.heat += heat;
-			// TODO: meltdown
+			if (meltdownHandler != null) {
+				meltdownHandler.accept(this.heat + heat);
+			}
 			return heat;
 		}
+	}
+
+	@Override
+	public void setMeltdownHandler(Consumer<Double> consumer) {
+		meltdownHandler = consumer;
 	}
 
 }

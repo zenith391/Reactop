@@ -6,6 +6,7 @@ import io.zenith391.reactop.HeatComponentImpl;
 import io.zenith391.reactop.registry.BlockRegistry;
 import nerdhub.cardinal.components.api.BlockComponentProvider;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Tickable;
@@ -18,6 +19,9 @@ public class HeatConducterBlockEntity extends BlockEntity implements Tickable {
 	public HeatConducterBlockEntity() {
 		super(BlockRegistry.HEAT_CONDUCTER_ENTITY);
 		heat.setCapacity(500);
+		heat.setMeltdownHandler((target) -> {
+			world.setBlockState(pos, Blocks.LAVA.getDefaultState());
+		});
 	}
 	
 	public CompoundTag toTag(CompoundTag tag) {
@@ -48,10 +52,7 @@ public class HeatConducterBlockEntity extends BlockEntity implements Tickable {
 
 	@Override
 	public void tick() {
-		
-		if (heat.getHeat() < 293d) { // arbitrary Minecraft ambient temperature
-			heat.addHeat(1d);
-		}
+		heat.ambientTemperature();
 		
 		tryShare(pos.down());
 		tryShare(pos.up());
@@ -59,7 +60,6 @@ public class HeatConducterBlockEntity extends BlockEntity implements Tickable {
 		tryShare(pos.east());
 		tryShare(pos.west());
 		tryShare(pos.south());
-		
 	}
 	
 }
