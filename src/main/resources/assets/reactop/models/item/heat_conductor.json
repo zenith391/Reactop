@@ -1,5 +1,5 @@
 {
-	"parent": "reactop:block/heat_conducter_default",
+	"parent": "reactop:block/heat_conductor_default",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [ -90, 0, 0 ],

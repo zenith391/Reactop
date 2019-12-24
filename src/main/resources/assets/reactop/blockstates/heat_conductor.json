@@ -1,0 +1,11 @@
+{
+	"multipart": [
+		{ "apply": {"model": "reactop:block/heat_conducter_default" }},
+		{ "when": { "down": "true"}, "apply": { "model": "reactop:block/heat_conductor", "x": 90 }},
+		{ "when": { "up": "true" }, "apply": { "model": "reactop:block/heat_conductor", "x": 270}},
+		{ "when": { "south": "true" }, "apply": { "model": "reactop:block/heat_conductor", "y": 180 }},
+		{ "when": { "north": "true" }, "apply": { "model": "reactop:block/heat_conductor" }},
+		{ "when": { "west": "true" }, "apply": { "model": "reactop:block/heat_conductor", "y": 270 }},
+		{ "when": { "east": "true" }, "apply": { "model": "reactop:block/heat_conductor", "y": 90 }}
+	]
+}

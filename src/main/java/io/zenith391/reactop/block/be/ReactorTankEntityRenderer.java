@@ -14,7 +14,6 @@ public class ReactorTankEntityRenderer extends BlockEntityRenderer<ReactorTankBl
 	@Override
 	public void render(ReactorTankBlockEntity tank, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 		matrices.push();
-		
 		matrices.pop();
 	}
 	

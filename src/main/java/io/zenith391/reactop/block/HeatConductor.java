@@ -12,7 +12,6 @@ import nerdhub.cardinal.components.api.component.Component;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
@@ -28,7 +27,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class HeatConducter extends Block implements BlockComponentProvider, BlockEntityProvider  {
+public class HeatConductor extends Block implements BlockComponentProvider, BlockEntityProvider  {
 
 	public static final BooleanProperty DOWN = BooleanProperty.of("down");
 	public static final BooleanProperty UP = BooleanProperty.of("up");
@@ -49,7 +48,7 @@ public class HeatConducter extends Block implements BlockComponentProvider, Bloc
 			PistonBehavior.NORMAL
 		);
 	
-	public HeatConducter() {
+	public HeatConductor() {
 		super(FabricBlockSettings.of(MATERIAL)
 				.hardness(2.f)
 				.build()

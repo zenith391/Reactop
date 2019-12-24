@@ -1,7 +1,7 @@
 {
     "block.reactop.milidium_block": "Milidium Block",
     "block.reactop.useless_milidium_block": "Milidium Block (Useless)",
-    "block.reactop.heat_conducter": "Heat Conducter",
+    "block.reactop.heat_conductor": "Heat Conductor",
     "block.reactop.heat_storage": "Heat Storage",
     "block.reactop.reactor_tank": "Reactor Tank",
     "block.reactop.neutron_injector": "Neutron Injector",
