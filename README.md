@@ -3,8 +3,11 @@
 
 Reactop is a mod adding reactors to Minecraft.
 
-### Branch `mc1.14.4-dev`
-This mean you are on the unstable branch for Minecraft 1.14.4. Compiling from this branch might result in errors.
+### Branch `mc1.15-dev`
+This mean you are on the unstable branch for Minecraft `1.15.x`. Compiling from this branch might result in errors.
+
+### Branch `master`
+Currently for Minecraft `1.15.x`, you will always be able to compile from here.
 
 ### License
 Reactop is under [MIT License](https://github.com/zenith391/reactop/blob/master/LICENSE).
