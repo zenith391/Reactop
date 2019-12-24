@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.EnumProperty;
@@ -26,14 +27,14 @@ public class NeutronInjector extends Block {
 			);
 	}
 	
-	@Override
-	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory) {
-		stateFactory.add(DIRECTION);
+	public BlockState getPlacementState(ItemPlacementContext ctx) {
+		Direction dir = ctx.getPlayerLookDirection().getOpposite();
+		return getDefaultState().with(DIRECTION, dir);
 	}
 	
 	@Override
-	public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
-		
+	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory) {
+		stateFactory.add(DIRECTION);
 	}
 
 }
