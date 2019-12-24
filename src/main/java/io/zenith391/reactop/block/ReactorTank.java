@@ -7,7 +7,7 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.state.StateFactory;
+import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.world.BlockView;
 
@@ -22,7 +22,7 @@ public class ReactorTank extends Block implements BlockEntityProvider {
 				.resistance(1.f)
 				.build()
 				);
-		setDefaultState(getStateFactory().getDefaultState()
+		setDefaultState(getStateManager().getDefaultState()
 				.with(UP, false)
 				.with(DOWN, false));
 	}
@@ -33,7 +33,7 @@ public class ReactorTank extends Block implements BlockEntityProvider {
 	}
 	
 	@Override
-	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory) {
+	protected void appendProperties(StateManager.Builder<Block, BlockState> stateFactory) {
 		stateFactory.add(UP);
 		stateFactory.add(DOWN);
 	}

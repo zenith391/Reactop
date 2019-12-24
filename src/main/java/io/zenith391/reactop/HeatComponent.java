@@ -11,6 +11,8 @@ public interface HeatComponent extends Component {
 	public double getCapacity();
 	public void setCapacity(double capacity);
 	
+	public boolean canGetHeat(double curr);
+	
 	/**
 	 * Acts as if heat was shared, returns shared heat<br/>
 	 * Note: This methods drains heat from the component.
@@ -24,6 +26,13 @@ public interface HeatComponent extends Component {
 		double shared = getHeat()/(1+conduct);
 		setHeat(getHeat() - shared);
 		return shared;
+	}
+	
+	public default void shareHeat(HeatComponent hc) {
+		double share = shareHeat(1f);
+		double share2 = hc.shareHeat(1f);
+		hc.addHeat(share);
+		addHeat(share2);
 	}
 	
 }

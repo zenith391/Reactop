@@ -35,18 +35,13 @@ public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 		return heat;
 	}
 	
-	private void tryShare(BlockState state, BlockPos pos) {
+	private void tryShare(BlockPos pos) {
+		BlockState state = world.getBlockState(pos);
 		if (state.getBlock() instanceof BlockComponentProvider) {
 			BlockComponentProvider provider = (BlockComponentProvider) state.getBlock();
 			if (provider.hasComponent(world, pos, ComponentTypes.HEAT_COMPONENT, null)) {
 				HeatComponent hc = provider.getComponent(world, pos, ComponentTypes.HEAT_COMPONENT, null);
-				if (hc.getHeat() < 500d) {
-					double shared = heat.shareHeat(1);
-					double consumed = hc.addHeat(shared);
-					if (consumed < shared) {
-						heat.addHeat(shared - consumed);
-					}
-				}
+				heat.shareHeat(hc);
 			}
 		}
 	}
@@ -56,14 +51,16 @@ public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 		
 		if (heat.getHeat() < 293d) { // arbitrary Minecraft ambient temperature
 			heat.addHeat(1d);
+		} else {
+			heat.addHeat(-0.05d);
 		}
 		
-		tryShare(world.getBlockState(pos.down()), pos.down());
-		tryShare(world.getBlockState(pos.up()), pos.up());
-		tryShare(world.getBlockState(pos.north()), pos.north());
-		tryShare(world.getBlockState(pos.east()), pos.east());
-		tryShare(world.getBlockState(pos.west()), pos.west());
-		tryShare(world.getBlockState(pos.south()), pos.south());
+		tryShare(pos.down());
+		tryShare(pos.up());
+		tryShare(pos.north());
+		tryShare(pos.east());
+		tryShare(pos.west());
+		tryShare(pos.south());
 		
 	}
 	

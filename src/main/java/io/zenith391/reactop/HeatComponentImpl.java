@@ -24,6 +24,10 @@ public class HeatComponentImpl implements HeatComponent {
 	public void setCapacity(double capacity) {
 		this.capacity = capacity;
 	}
+	
+	public boolean canGetHeat(double currValue) {
+		return currValue < heat;
+	}
 
 	@Override
 	public double addHeat(double heat) {
@@ -33,6 +37,7 @@ public class HeatComponentImpl implements HeatComponent {
 		} else {
 			heat = capacity - this.heat;
 			this.heat += heat;
+			// TODO: meltdown
 			return heat;
 		}
 	}

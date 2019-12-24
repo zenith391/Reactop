@@ -12,7 +12,7 @@ import nerdhub.cardinal.components.api.component.Component;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderLayer;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
@@ -21,7 +21,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.state.StateFactory;
+import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -54,7 +54,7 @@ public class HeatConducter extends Block implements BlockComponentProvider, Bloc
 				.hardness(2.f)
 				.build()
 				);
-		setDefaultState(getStateFactory().getDefaultState()
+		setDefaultState(getStateManager().getDefaultState()
 				.with(DOWN, false)
 				.with(UP, false)
 				.with(WEST, false)
@@ -73,8 +73,8 @@ public class HeatConducter extends Block implements BlockComponentProvider, Bloc
 		return false;
 	}
 	
-	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
+	public boolean isTranslucent(BlockState state, BlockView view, BlockPos pos) {
+		return true;
 	}
 	
 	public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
@@ -127,7 +127,7 @@ public class HeatConducter extends Block implements BlockComponentProvider, Bloc
 	}
 	
 	@Override
-	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory) {
+	protected void appendProperties(StateManager.Builder<Block, BlockState> stateFactory) {
 		stateFactory.add(UP);
 		stateFactory.add(DOWN);
 		stateFactory.add(WEST);
