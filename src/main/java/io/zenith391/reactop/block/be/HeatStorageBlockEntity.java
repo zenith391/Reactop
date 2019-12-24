@@ -3,7 +3,6 @@ package io.zenith391.reactop.block.be;
 import io.zenith391.reactop.ComponentTypes;
 import io.zenith391.reactop.HeatComponent;
 import io.zenith391.reactop.HeatComponentImpl;
-import io.zenith391.reactop.block.HeatConducter;
 import io.zenith391.reactop.registry.BlockRegistry;
 import nerdhub.cardinal.components.api.BlockComponentProvider;
 import net.minecraft.block.BlockState;
@@ -12,13 +11,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Tickable;
 import net.minecraft.util.math.BlockPos;
 
-public class HeatConducterBlockEntity extends BlockEntity implements Tickable {
+public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 
 	HeatComponent heat = new HeatComponentImpl();
 	
-	public HeatConducterBlockEntity() {
-		super(BlockRegistry.HEAT_CONDUCTER_ENTITY);
-		heat.setCapacity(500);
+	public HeatStorageBlockEntity() {
+		super(BlockRegistry.HEAT_STORAGE_ENTITY);
+		heat.setCapacity(10000);
 	}
 	
 	public CompoundTag toTag(CompoundTag tag) {
@@ -41,10 +40,12 @@ public class HeatConducterBlockEntity extends BlockEntity implements Tickable {
 			BlockComponentProvider provider = (BlockComponentProvider) state.getBlock();
 			if (provider.hasComponent(world, pos, ComponentTypes.HEAT_COMPONENT, null)) {
 				HeatComponent hc = provider.getComponent(world, pos, ComponentTypes.HEAT_COMPONENT, null);
-				double shared = heat.shareHeat(1);
-				double consumed = hc.addHeat(shared);
-				if (consumed < shared) {
-					heat.addHeat(shared - consumed);
+				if (hc.getHeat() < 500d) {
+					double shared = heat.shareHeat(1);
+					double consumed = hc.addHeat(shared);
+					if (consumed < shared) {
+						heat.addHeat(shared - consumed);
+					}
 				}
 			}
 		}

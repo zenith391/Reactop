@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.3-SNAPSHOT'
+	id 'fabric-loom' version '0.2.6-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -15,6 +15,10 @@ repositories {
         name = "NerdHubMC"
         url = "https://maven.abusedmaster.xyz"
     }
+    maven {
+    	name = "Cotton"
+    	url = "http://server.bbkr.space:8081/artifactory/libs-release/"
+    }
 }
 
 minecraft {
@@ -23,13 +27,14 @@ minecraft {
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Dependencies
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modCompile "com.github.NerdHubMC:Cardinal-Energy:${cardinal_energy_version}"
 	modCompile "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
+	modCompile "io.github.cottonmc:LibGui:1.3.2"
 	include "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
 }
 

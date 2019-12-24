@@ -2,10 +2,14 @@
     "block.reactop.milidium_block": "Milidium Block",
     "block.reactop.useless_milidium_block": "Milidium Block (Useless)",
     "block.reactop.heat_conducter": "Heat Conducter",
+    "block.reactop.heat_storage": "Heat Storage",
+    "block.reactop.reactor_tank": "Reactor Tank",
+    "block.reactop.neutron_injector": "Neutron Injector",
     
     "item.reactop.useless_milidium_ingot": "Milidium Ingot (Useless)",
     "item.reactop.milidium_ingot": "Milidium Ingot",
     "item.reactop.milidium_bar": "Milidium Bar",
+    "item.reactop.temperature_gauge": "Temperature Gauge",
     
     "itemGroup.reactop.item_group": "Reactop",
     "custom.reactop.unknown_milidium_type": "Milidium Ingot (Unknown)"
