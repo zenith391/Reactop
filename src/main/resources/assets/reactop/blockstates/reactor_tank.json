@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "up=true,down=false": { "model": "reactop:block/reactor_tank_bottom" },
+        "up=true,down=true": { "model": "reactop:block/reactor_tank_middle" },
+        "up=false,down=true": { "model": "reactop:block/reactor_tank_top" },
+        "up=false,down=false": { "model": "reactop:block/reactor_tank_whole" },
+        "": { "model": "reactop:block/reactor_tank_whole"}
+    }
+}

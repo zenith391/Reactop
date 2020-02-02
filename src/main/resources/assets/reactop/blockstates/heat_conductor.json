@@ -1,6 +1,6 @@
 {
 	"multipart": [
-		{ "apply": {"model": "reactop:block/heat_conducter_default" }},
+		{ "apply": {"model": "reactop:block/heat_conductor_default" }},
 		{ "when": { "down": "true"}, "apply": { "model": "reactop:block/heat_conductor", "x": 90 }},
 		{ "when": { "up": "true" }, "apply": { "model": "reactop:block/heat_conductor", "x": 270}},
 		{ "when": { "south": "true" }, "apply": { "model": "reactop:block/heat_conductor", "y": 180 }},

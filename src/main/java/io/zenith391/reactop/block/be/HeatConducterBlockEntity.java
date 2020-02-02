@@ -52,7 +52,7 @@ public class HeatConducterBlockEntity extends BlockEntity implements Tickable {
 
 	@Override
 	public void tick() {
-		heat.ambientTemperature();
+		heat.ambientTemperature(1d);
 		
 		tryShare(pos.down());
 		tryShare(pos.up());

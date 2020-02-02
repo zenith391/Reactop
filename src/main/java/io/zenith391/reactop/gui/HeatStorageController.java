@@ -2,7 +2,7 @@ package io.zenith391.reactop.gui;
 
 import java.util.Optional;
 
-import io.github.cottonmc.cotton.gui.CottonScreenController;
+import io.github.cottonmc.cotton.gui.CottonCraftingController;
 import io.github.cottonmc.cotton.gui.widget.WBar;
 import io.github.cottonmc.cotton.gui.widget.WBar.Direction;
 import io.github.cottonmc.cotton.gui.widget.WGridPanel;
@@ -14,7 +14,7 @@ import net.minecraft.container.PropertyDelegate;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.recipe.RecipeType;
 
-public class HeatStorageController extends CottonScreenController {
+public class HeatStorageController extends CottonCraftingController {
 	
 	private HeatStorageBlockEntity be;
 	private WBar bar;

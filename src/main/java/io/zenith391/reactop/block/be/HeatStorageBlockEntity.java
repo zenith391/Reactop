@@ -48,8 +48,7 @@ public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 
 	@Override
 	public void tick() {
-		heat.ambientTemperature();
-		heat.setHeat(5000d);
+		heat.ambientTemperature(0.5d);
 		
 		tryShare(pos.down());
 		tryShare(pos.up());

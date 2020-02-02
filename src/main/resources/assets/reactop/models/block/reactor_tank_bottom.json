@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "reactop:block/reactor_tank_bottom"
+    }
+}

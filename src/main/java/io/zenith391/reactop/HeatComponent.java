@@ -46,11 +46,11 @@ public interface HeatComponent extends Component {
 	/**
 	 * Apply ambient temperature
 	 */
-	public default void ambientTemperature() {
+	public default void ambientTemperature(double efficiency) {
 		if (getHeat() < 20d) {
-			addHeat(0.5d);
+			addHeat(0.5d * efficiency);
 		} else {
-			addHeat(-0.05d);
+			addHeat(-0.05d * efficiency);
 		}
 	}
 	
