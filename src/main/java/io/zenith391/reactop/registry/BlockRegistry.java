@@ -44,18 +44,18 @@ public class BlockRegistry {
 		register("reactor_tank", REACTOR_TANK);
 		
 		// Block Entities
-		HEAT_CONDUCTER_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
+		HEAT_CONDUCTER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
 				new Identifier("reactop", "heat_conducter_entity"),
 				BlockEntityType.Builder.create(HeatConducterBlockEntity::new, HEAT_CONDUCTOR).build(null));
 		
-		HEAT_STORAGE_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
+		HEAT_STORAGE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
 				new Identifier("reactop", "heat_storage_entity"),
 				BlockEntityType.Builder.create(HeatStorageBlockEntity::new, HEAT_STORAGE).build(null));
 		
-		REACTOR_TANK_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
+		REACTOR_TANK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
 				new Identifier("reactop", "reactor_tank_entity"),
 				BlockEntityType.Builder.create(ReactorTankBlockEntity::new, REACTOR_TANK).build(null));
-		NEUTRON_INJECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY,
+		NEUTRON_INJECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
 				new Identifier("reactop", "neutron_injector_entity"),
 				BlockEntityType.Builder.create(NeutronInjectorBlockEntity::new, NEUTRON_INJECTOR).build(null));
 	}
