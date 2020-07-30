@@ -2,36 +2,29 @@ package io.zenith391.reactop.gui;
 
 import java.util.Optional;
 
-import io.github.cottonmc.cotton.gui.CottonCraftingController;
+import io.github.cottonmc.cotton.gui.SyncedGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.WBar;
 import io.github.cottonmc.cotton.gui.widget.WBar.Direction;
 import io.github.cottonmc.cotton.gui.widget.WGridPanel;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
+import io.zenith391.reactop.block.HeatStorage;
 import io.zenith391.reactop.block.be.HeatStorageBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.container.BlockContext;
-import net.minecraft.container.PropertyDelegate;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.recipe.RecipeType;
+import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.screen.ScreenHandlerContext;
 
-public class HeatStorageController extends CottonCraftingController {
+public class HeatStorageDescription extends SyncedGuiDescription {
 	
 	private HeatStorageBlockEntity be;
 	private WBar bar;
 	
-	public HeatStorageController(int syncId, PlayerInventory playerInventory, BlockContext ctx) {
-		super(RecipeType.SMELTING, syncId, playerInventory);
+	public HeatStorageDescription(int syncId, PlayerInventory playerInventory, ScreenHandlerContext ctx, HeatStorageBlockEntity be) {
+		super(HeatStorage.SCREEN_HANDLER_TYPE, syncId, playerInventory, getBlockInventory(ctx, 0), getBlockPropertyDelegate(ctx));
 		
-		WGridPanel root = (WGridPanel) getRootPanel();
-		Optional<BlockEntity> optional = ctx.run((world, pos) -> {
-			return world.getBlockEntity(pos);
-		});
-		
-		if (optional.isPresent()) {
-			if (optional.get() instanceof HeatStorageBlockEntity) {
-				be = (HeatStorageBlockEntity) optional.get();
-			}
-		}
+		WGridPanel root = new WGridPanel();
+		setRootPanel(root);
+		this.be = be;
 		
 		bar = new WBar(null, null, 0, 1, Direction.RIGHT);
 		
@@ -47,6 +40,7 @@ public class HeatStorageController extends CottonCraftingController {
 
 			@Override
 			public int get(int id) {
+				if (be == null) return 0;
 				switch(id) {
 				case 0:
 					return (int) be.getHeatComponent().getHeat();

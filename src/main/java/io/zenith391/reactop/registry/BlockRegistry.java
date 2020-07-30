@@ -31,7 +31,7 @@ public class BlockRegistry {
 	}
 	
 	static void register(String id, Block block) {
-		Registry.BLOCK.add(new Identifier("reactop", id), block);
+		Registry.register(Registry.BLOCK, new Identifier("reactop", id), block);
 		ItemRegistry.BLOCKS.add(block);
 	}
 	

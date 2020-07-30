@@ -1,6 +1,7 @@
 package io.zenith391.reactop.block.be;
 
 import io.zenith391.reactop.registry.BlockRegistry;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
 
@@ -15,8 +16,8 @@ public class ReactorTankBlockEntity extends BlockEntity {
 		return tag;
 	}
 	
-	public void fromTag(CompoundTag tag) {
-		super.fromTag(tag);
+	public void fromTag(BlockState state, CompoundTag tag) {
+		super.fromTag(state, tag);
 		
 	}
 

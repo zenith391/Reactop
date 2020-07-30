@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "front": "reactop:block/neutron_injector_front",
+        "all": "reactop:block/neutron_injector"
+    }
+}

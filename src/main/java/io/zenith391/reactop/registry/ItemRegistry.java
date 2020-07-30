@@ -37,13 +37,13 @@ public class ItemRegistry {
 	}
 	
 	static void register(String id, Item i) {
-		Registry.ITEM.add(new Identifier("reactop", id), i);
+		Registry.register(Registry.ITEM, new Identifier("reactop", id), i);
 	}
 	
 	public static void register() {
 		for (Block block : BLOCKS) {
 			BlockItem item = new BlockItem(block, generateSettings(block));
-			Registry.ITEM.add(Registry.BLOCK.getId(block), item);
+			Registry.register(Registry.ITEM, Registry.BLOCK.getId(block), item);
 		}
 		
 		register("milidium_ingot", MILIDIUM_INGOT);

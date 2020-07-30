@@ -3,7 +3,7 @@ package io.zenith391.reactop.item;
 import io.zenith391.reactop.ComponentTypes;
 import io.zenith391.reactop.HeatComponent;
 import io.zenith391.reactop.ReactopMod;
-import nerdhub.cardinal.components.api.BlockComponentProvider;
+import nerdhub.cardinal.components.api.component.BlockComponentProvider;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
@@ -24,7 +24,7 @@ public class TemperatureGauge extends Item {
 			BlockComponentProvider provider = (BlockComponentProvider) block;
 			if (provider.hasComponent(usage.getWorld(), usage.getBlockPos(), ComponentTypes.HEAT_COMPONENT, null)) {
 				HeatComponent hc = provider.getComponent(usage.getWorld(), usage.getBlockPos(), ComponentTypes.HEAT_COMPONENT, null);
-				usage.getPlayer().sendMessage(new LiteralText("Heat: " + (int) hc.getHeat() + "/" + (int) hc.getCapacity() + "°C"));
+				usage.getPlayer().sendMessage(new LiteralText("Heat: " + (int) hc.getHeat() + "/" + (int) hc.getCapacity() + "°C"), true);
 				return ActionResult.SUCCESS;
 			}
 		}

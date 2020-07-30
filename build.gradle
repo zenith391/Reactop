@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.6-SNAPSHOT'
+	id 'fabric-loom' version '0.4-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -12,12 +12,16 @@ group = project.maven_group
 
 repositories {
     maven {
-        name = "NerdHubMC"
-        url = "https://maven.abusedmaster.xyz"
+        name = "Ladysnake Libs"
+        url = "https://dl.bintray.com/ladysnake/libs"
     }
     maven {
     	name = "Cotton"
     	url = "http://server.bbkr.space:8081/artifactory/libs-release/"
+    }
+    maven {
+    	name = "Modmuss50"
+    	url = "https://maven.modmuss50.me/"
     }
 }
 
@@ -32,10 +36,13 @@ dependencies {
 
 	// Dependencies
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modCompile "com.github.NerdHubMC:Cardinal-Energy:${cardinal_energy_version}"
-	modCompile "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
-	modCompile "io.github.cottonmc:LibGui:1.5.1"
-	include "com.github.NerdHubMC:Cardinal-Components-API:${cardinal_components_version}"
+	//implementation "com.github.NerdHubMC:Cardinal-Energy:${cardinal_energy_version}"
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${cardinal_components_version}"
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:${cardinal_components_version}"
+	modApi "teamreborn:energy:${teamreborn_energy_version}"
+	include "teamreborn:energy:${teamreborn_energy_version}"
+	//include "io.github.onyxstudios.Cardinal-Components-API:${cardinal_components_version}"
+	modCompile "io.github.cottonmc:LibGui:2.2.0+1.16.1"
 }
 
 processResources {

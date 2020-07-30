@@ -4,7 +4,7 @@ import io.zenith391.reactop.ComponentTypes;
 import io.zenith391.reactop.HeatComponent;
 import io.zenith391.reactop.HeatComponentImpl;
 import io.zenith391.reactop.registry.BlockRegistry;
-import nerdhub.cardinal.components.api.BlockComponentProvider;
+import nerdhub.cardinal.components.api.component.BlockComponentProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -30,8 +30,8 @@ public class HeatConducterBlockEntity extends BlockEntity implements Tickable {
 		return tag;
 	}
 	
-	public void fromTag(CompoundTag tag) {
-		super.fromTag(tag);
+	public void fromTag(BlockState state, CompoundTag tag) {
+		super.fromTag(state, tag);
 		heat.setHeat(tag.getDouble("heat"));
 	}
 

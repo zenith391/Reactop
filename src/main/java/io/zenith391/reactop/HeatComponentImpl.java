@@ -2,6 +2,8 @@ package io.zenith391.reactop;
 
 import java.util.function.Consumer;
 
+import net.minecraft.nbt.CompoundTag;
+
 public class HeatComponentImpl implements HeatComponent {
 
 	protected double heat;
@@ -48,6 +50,18 @@ public class HeatComponentImpl implements HeatComponent {
 	@Override
 	public void setMeltdownHandler(Consumer<Double> consumer) {
 		meltdownHandler = consumer;
+	}
+
+	@Override
+	public void fromTag(CompoundTag tag) {
+		if (tag.contains("heat"))
+			heat = tag.getDouble("heat");
+	}
+
+	@Override
+	public CompoundTag toTag(CompoundTag tag) {
+		tag.putDouble("heat", heat);
+		return tag;
 	}
 
 }

@@ -1,16 +1,15 @@
 package io.zenith391.reactop.block;
 
 import java.util.Set;
-
 import com.google.common.collect.Sets;
-
 import io.zenith391.reactop.ComponentTypes;
 import io.zenith391.reactop.block.be.HeatStorageBlockEntity;
-import nerdhub.cardinal.components.api.BlockComponentProvider;
+import io.zenith391.reactop.gui.HeatStorageDescription;
 import nerdhub.cardinal.components.api.ComponentType;
+import nerdhub.cardinal.components.api.component.BlockComponentProvider;
 import nerdhub.cardinal.components.api.component.Component;
-import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -19,6 +18,9 @@ import net.minecraft.block.MaterialColor;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -38,27 +40,26 @@ public class HeatStorage extends Block implements BlockComponentProvider, BlockE
 			true,
 			true,
 			false,
-			false,
 			PistonBehavior.NORMAL
 		);
 	
 	public static final Identifier GUI_ID = new Identifier("reactop", "heat_storage_gui");
+	public static final ScreenHandlerType<HeatStorageDescription> SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(GUI_ID, (syncId, inventory) -> {
+		return new HeatStorageDescription(syncId, inventory, ScreenHandlerContext.EMPTY, null);
+	});
 	
 	public HeatStorage() {
 		super(FabricBlockSettings.of(MATERIAL)
-				.hardness(2.f)
-				.build()
-				);
+				.hardness(2f));
+	}
+	
+	public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
+		HeatStorageBlockEntity be = (HeatStorageBlockEntity) world.getBlockEntity(pos);
+		return be;
 	}
 	
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
-		if (world.isClient) return ActionResult.SUCCESS;
-		BlockEntity be = world.getBlockEntity(pos);
-		if (be != null && be instanceof HeatStorageBlockEntity) {
-			ContainerProviderRegistry.INSTANCE.openContainer(GUI_ID, player, (buf) -> {
-				buf.writeBlockPos(pos);
-			});
-		}
+		player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
 		return ActionResult.SUCCESS;
 	}
 

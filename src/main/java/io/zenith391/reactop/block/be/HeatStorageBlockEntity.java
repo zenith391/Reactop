@@ -3,15 +3,23 @@ package io.zenith391.reactop.block.be;
 import io.zenith391.reactop.ComponentTypes;
 import io.zenith391.reactop.HeatComponent;
 import io.zenith391.reactop.HeatComponentImpl;
+import io.zenith391.reactop.gui.HeatStorageDescription;
 import io.zenith391.reactop.registry.BlockRegistry;
-import nerdhub.cardinal.components.api.BlockComponentProvider;
+import nerdhub.cardinal.components.api.component.BlockComponentProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Tickable;
 import net.minecraft.util.math.BlockPos;
 
-public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
+public class HeatStorageBlockEntity extends BlockEntity implements Tickable, NamedScreenHandlerFactory {
 
 	HeatComponent heat = new HeatComponentImpl();
 	
@@ -26,8 +34,8 @@ public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 		return tag;
 	}
 	
-	public void fromTag(CompoundTag tag) {
-		super.fromTag(tag);
+	public void fromTag(BlockState state, CompoundTag tag) {
+		super.fromTag(state, tag);
 		heat.setHeat(tag.getDouble("heat"));
 	}
 
@@ -56,6 +64,16 @@ public class HeatStorageBlockEntity extends BlockEntity implements Tickable {
 		tryShare(pos.east());
 		tryShare(pos.west());
 		tryShare(pos.south());
+	}
+
+	@Override
+	public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
+		return new HeatStorageDescription(syncId, inventory, ScreenHandlerContext.create(world, pos), this);
+	}
+
+	@Override
+	public Text getDisplayName() {
+		return new TranslatableText(getCachedState().getBlock().getTranslationKey());
 	}
 	
 }
