@@ -12,12 +12,14 @@ public class BlockRegistry {
 	public static final Block MILIDIUM_BLOCK;
 	public static final Block USELESS_MILIDIUM_BLOCK;
 	public static final Block HEAT_CONDUCTOR;
-	public static final Block HEAT_STORAGE;
+	public static final Block HEAT_FURNACE;
+	public static final Block BOILER;
 	public static final Block NEUTRON_INJECTOR;
 	public static final Block REACTOR_TANK;
 	
 	public static BlockEntityType<HeatConducterBlockEntity> HEAT_CONDUCTER_ENTITY;
-	public static BlockEntityType<HeatStorageBlockEntity> HEAT_STORAGE_ENTITY;
+	public static BlockEntityType<BoilerBlockEntity> BOILER_ENTITY;
+	public static BlockEntityType<HeatFurnaceBlockEntity> HEAT_FURNACE_ENTITY;
 	public static BlockEntityType<ReactorTankBlockEntity> REACTOR_TANK_ENTITY;
 	public static BlockEntityType<NeutronInjectorBlockEntity> NEUTRON_INJECTOR_ENTITY;
 	
@@ -25,7 +27,8 @@ public class BlockRegistry {
 		MILIDIUM_BLOCK = new MilidiumBlock();
 		USELESS_MILIDIUM_BLOCK = new UselessMilidiumBlock();
 		HEAT_CONDUCTOR = new HeatConductor();
-		HEAT_STORAGE = new HeatStorage();
+		HEAT_FURNACE = new HeatFurnace();
+		BOILER = new Boiler();
 		NEUTRON_INJECTOR = new NeutronInjector();
 		REACTOR_TANK = new ReactorTank();
 	}
@@ -39,18 +42,23 @@ public class BlockRegistry {
 		register("milidium_block", MILIDIUM_BLOCK);
 		register("useless_milidium_block", USELESS_MILIDIUM_BLOCK);
 		register("heat_conductor", HEAT_CONDUCTOR);
-		register("heat_storage", HEAT_STORAGE);
+		register("boiler", BOILER);
 		register("neutron_injector", NEUTRON_INJECTOR);
 		register("reactor_tank", REACTOR_TANK);
+		register("heat_furnace", HEAT_FURNACE);
 		
 		// Block Entities
 		HEAT_CONDUCTER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
 				new Identifier("reactop", "heat_conducter_entity"),
 				BlockEntityType.Builder.create(HeatConducterBlockEntity::new, HEAT_CONDUCTOR).build(null));
 		
-		HEAT_STORAGE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
-				new Identifier("reactop", "heat_storage_entity"),
-				BlockEntityType.Builder.create(HeatStorageBlockEntity::new, HEAT_STORAGE).build(null));
+		BOILER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+				new Identifier("reactop", "boiler_entity"),
+				BlockEntityType.Builder.create(BoilerBlockEntity::new, BOILER).build(null));
+		
+		HEAT_FURNACE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+				new Identifier("reactop", "heat_furnace"),
+				BlockEntityType.Builder.create(HeatFurnaceBlockEntity::new, HEAT_FURNACE).build(null));
 		
 		REACTOR_TANK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
 				new Identifier("reactop", "reactor_tank_entity"),

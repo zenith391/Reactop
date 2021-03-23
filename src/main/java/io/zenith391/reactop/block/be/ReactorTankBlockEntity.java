@@ -6,7 +6,9 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
 
 public class ReactorTankBlockEntity extends BlockEntity {
-
+	
+	// TODO: LibBlockAttributes for fluids
+	
 	public ReactorTankBlockEntity() {
 		super(BlockRegistry.REACTOR_TANK_ENTITY);
 	}

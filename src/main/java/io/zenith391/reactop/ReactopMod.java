@@ -12,7 +12,7 @@ import net.minecraft.util.registry.Registry;
 public class ReactopMod implements ModInitializer {
 	
 	public static final ItemGroup REACTOP_ITEM_GROUP = FabricItemGroupBuilder.create(new Identifier("reactop", "item_group"))
-			.icon(() -> new ItemStack(Registry.ITEM.get(new Identifier("reactop", "neutron_injector")), 1))
+			.icon(() -> new ItemStack(Registry.ITEM.get(new Identifier("reactop", "milidium_ingot")), 1))
 			.build();
 	
 	@Override

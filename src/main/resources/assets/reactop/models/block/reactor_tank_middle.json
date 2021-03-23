@@ -1,6 +1,12 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "reactop:block/reactor_tank_middle"
+    	"particle": "reactop:block/reactor_tank_whole",
+    	"north": "reactop:block/reactor_tank_middle",
+        "south": "reactop:block/reactor_tank_middle",
+        "west": "reactop:block/reactor_tank_middle",
+        "east": "reactop:block/reactor_tank_middle",
+        "down": "reactop:transparent",
+        "up": "reactop:transparent"
     }
 }

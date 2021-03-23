@@ -2,16 +2,18 @@ package io.zenith391.reactop;
 
 import java.util.function.Consumer;
 
-import nerdhub.cardinal.components.api.component.Component;
+import dev.onyxstudios.cca.api.v3.component.tick.ServerTickingComponent;
 
-public interface HeatComponent extends Component {
+public interface HeatComponent extends ServerTickingComponent {
 	
 	public double getHeat();
 	public void setHeat(double heat);
 	public double addHeat(double heat);
 	
 	public double getCapacity();
-	public void setCapacity(double capacity);
+	
+	public double getConductivity();
+	public void setConductivity(double conductivity);
 	
 	public boolean canGetHeat(double curr);
 	
@@ -43,15 +45,14 @@ public interface HeatComponent extends Component {
 		addHeat(share2);
 	}
 	
+	public static final double AMBIENT_HEAT_CONDUCTIVITY = 0.5d;
+	
 	/**
-	 * Apply ambient temperature
+	 * Apply ambient temperature effect.
+	 * @param efficiency When this is 0, no isolation is applied. When this is 1, max isolation is there and no heat loss / gain is made.
 	 */
-	public default void ambientTemperature(double efficiency) {
-		if (getHeat() < 20d) {
-			addHeat(0.5d * efficiency);
-		} else {
-			addHeat(-0.05d * efficiency);
-		}
+	public default void ambientTemperature(double isolation) {
+		setHeat(getHeat() * isolation + 20d * (1 - isolation));
 	}
 	
 }

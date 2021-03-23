@@ -1,7 +1,8 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
     "textures": {
-        "heat_conductor1": "reactop:block/heat_conductor1"
+        "heat_conductor1": "reactop:block/heat_conductor1",
+        "particle": "reactop:block/heat_conductor1"
     },
     "elements": [
         {

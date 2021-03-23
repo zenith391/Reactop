@@ -15,7 +15,6 @@ public class NeutronInjector extends Block {
 	
 	public NeutronInjector() {
 		super(FabricBlockSettings.of(Material.METAL)
-				.lightLevel(5)
 				.strength(3f, 2f));
 		setDefaultState(getStateManager().getDefaultState()
 				.with(DIRECTION, Direction.UP)

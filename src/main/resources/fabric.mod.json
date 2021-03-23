@@ -24,17 +24,23 @@
     ],
     "client": [
       "io.zenith391.reactop.client.ReactopClient"
+    ],
+    "cardinal-components": [
+      "io.zenith391.reactop.ReactopComponents"
     ]
+  },
+  "custom": {
+  	"cardinal-components": [
+  		"reactop:heat"
+  	]
   },
   "mixins": [
     
   ],
 
   "depends": {
-    "fabricloader": ">=0.9.0",
-    "fabric": "*",
-    
-    "libgui": "2.2.0"
+    "fabricloader": ">=0.11.0",
+    "fabric": ">=0.31.0"
   },
   "suggests": {}
 }

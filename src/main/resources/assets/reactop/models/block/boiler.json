@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "reactop:block/heat_storage"
+        "all": "reactop:block/boiler"
     }
 }

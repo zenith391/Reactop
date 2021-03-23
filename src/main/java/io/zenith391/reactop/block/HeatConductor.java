@@ -3,7 +3,9 @@ package io.zenith391.reactop.block;
 import java.util.HashSet;
 import java.util.Set;
 
+import dev.onyxstudios.cca.api.v3.block.BlockComponents;
 import io.zenith391.reactop.ComponentTypes;
+import io.zenith391.reactop.ReactopComponents;
 import io.zenith391.reactop.block.be.HeatConducterBlockEntity;
 import nerdhub.cardinal.components.api.ComponentType;
 import nerdhub.cardinal.components.api.component.BlockComponentProvider;
@@ -22,7 +24,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -30,7 +31,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class HeatConductor extends Block implements BlockComponentProvider, BlockEntityProvider  {
+public class HeatConductor extends Block implements BlockEntityProvider  {
 
 	public static final BooleanProperty DOWN = BooleanProperty.of("down");
 	public static final BooleanProperty UP = BooleanProperty.of("up");
@@ -66,13 +67,7 @@ public class HeatConductor extends Block implements BlockComponentProvider, Bloc
 	}
 	
 	private boolean canConnectTo(Block block, BlockPos pos, World world) {
-		if (block instanceof BlockComponentProvider) {
-			BlockComponentProvider provider = (BlockComponentProvider) block;
-			if (provider.hasComponent(world, pos, ComponentTypes.HEAT_COMPONENT, null)) {
-				return true;
-			}
-		}
-		return false;
+		return BlockComponents.get(ReactopComponents.HEAT, world, pos) != null;
 	}
 	
 	public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext ctx) {
@@ -166,30 +161,6 @@ public class HeatConductor extends Block implements BlockComponentProvider, Bloc
 		stateFactory.add(EAST);
 		stateFactory.add(NORTH);
 		stateFactory.add(SOUTH);
-	}
-
-	@Override
-	public <T extends Component> boolean hasComponent(BlockView blockView, BlockPos pos, ComponentType<T> type,
-			Direction side) {
-		return type == ComponentTypes.HEAT_COMPONENT;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T extends Component> T getComponent(BlockView blockView, BlockPos pos, ComponentType<T> type,
-			Direction side) {
-		if (type == ComponentTypes.HEAT_COMPONENT) {
-			return (T) ((HeatConducterBlockEntity) blockView.getBlockEntity(pos)).getHeatComponent();
-		}
-		return null;
-	}
-
-	@Override
-	public Set<ComponentType<? extends Component>> getComponentTypes(BlockView blockView, BlockPos pos,
-			Direction side) {
-		HashSet<ComponentType<? extends Component>> set = new HashSet<>();
-		set.add(ComponentTypes.HEAT_COMPONENT);
-		return set;
 	}
 
 	@Override
